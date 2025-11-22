@@ -1,0 +1,121 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTheme } from "./ThemeContext";
+
+
+const MemberSidebar = () => {
+  const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <div
+      className="h-screen w-64 shadow-sm"
+      style={{
+        background: "var(--background)",
+        color: "var(--foreground)",
+        borderRight: theme === 'dark' ? '1px solid #222' : '1px solid #eee',
+      }}
+    >
+      <div className="p-5 flex flex-col h-full">
+        {/* Header */}
+        <div className="flex items-start gap-3 mb-8">
+          <Image src="/file.svg" alt="Copy Trade" width={24} height={24} />
+          <div>
+            <h2 className="font-medium text-base">Copy Trade</h2>
+            <p className="text-sm text-gray-500" style={{ color: 'var(--foreground)' }}>Master User</p>
+          </div>
+        </div>
+
+        {/* Dark Mode Toggle */}
+        <button
+          onClick={toggleTheme}
+          className="mb-8 flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          style={{
+            color: "var(--foreground)",
+            borderColor: theme === 'dark' ? '#444' : '#ccc',
+            background: 'transparent',
+          }}
+        >
+          {theme === 'dark' ? (
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M21 12.79A9 9 0 0 1 11.21 3a1 1 0 0 0-1.13 1.32A7 7 0 0 0 12 21a7 7 0 0 0 9.68-1.92 1 1 0 0 0-1.32-1.13A9 9 0 0 1 21 12.79Z"/></svg>
+          ) : (
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm5.66 3.34a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 1 1-1.41-1.41l.71-.71ZM21 11a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2h1ZM6.34 6.34a1 1 0 0 1 0 1.41l-.71.71A1 1 0 0 1 4.22 7.76l.71-.71a1 1 0 0 1 1.41 0ZM12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm7.07 2.93a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 1 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41ZM12 19a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1Zm-7.07-2.93a1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1-1.41 0ZM4 13a1 1 0 1 1 0-2H3a1 1 0 1 1 0 2h1Z"/></svg>
+          )}
+          <span className="text-sm">{theme === 'dark' ? 'Dark' : 'Light'} Mode</span>
+        </button>
+
+        {/* Navigation */}
+        <div className="space-y-1 flex-1">
+          {/* Dashboard */}
+          <Link href="/member/dashboard">
+            <div className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === '/member/dashboard' ? 'bg-black text-white dark:bg-gray-800 dark:text-yellow-300' : 'text-gray-600 dark:text-gray-300'}`}
+              style={pathname === '/member/dashboard' ? { background: theme === 'dark' ? '#222' : '#000', color: theme === 'dark' ? '#ffe066' : '#fff' } : { color: theme === 'dark' ? '#ccc' : '' }}
+            >
+              <Image 
+                src="/window.svg" 
+                alt="Dashboard" 
+                width={20} 
+                height={20} 
+                className={pathname === '/member/dashboard' && theme === 'dark' ? 'invert' : ''}
+              />
+              <span className="text-sm">Dashboard</span>
+            </div>
+          </Link>
+
+          {/* My Group */}
+          <Link href="/member/mygroup">
+            <div className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === '/member/mygroup' ? 'bg-black text-white dark:bg-gray-800 dark:text-yellow-300' : 'text-gray-600 dark:text-gray-300'}`}
+              style={pathname === '/member/mygroup' ? { background: theme === 'dark' ? '#222' : '#000', color: theme === 'dark' ? '#ffe066' : '#fff' } : { color: theme === 'dark' ? '#ccc' : '' }}
+            >
+              <Image 
+                src="/file.svg" 
+                alt="My Group" 
+                width={20} 
+                height={20} 
+                className={pathname === '/member/mygroup' && theme === 'dark' ? 'invert' : ''}
+              />
+              <span className="text-sm">My Group</span>
+            </div>
+          </Link>
+
+          {/* Members */}
+          <Link href="/member/members">
+            <div className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === '/member/members' ? 'bg-black text-white dark:bg-gray-800 dark:text-yellow-300' : 'text-gray-600 dark:text-gray-300'}`}
+              style={pathname === '/member/members' ? { background: theme === 'dark' ? '#222' : '#000', color: theme === 'dark' ? '#ffe066' : '#fff' } : { color: theme === 'dark' ? '#ccc' : '' }}
+            >
+              <Image 
+                src="/globe.svg" 
+                alt="Members" 
+                width={20} 
+                height={20} 
+                className={pathname === '/member/members' && theme === 'dark' ? 'invert' : ''}
+              />
+              <span className="text-sm">Members</span>
+            </div>
+          </Link>
+
+          {/* Profile */}
+          <Link href="/member/profile">
+            <div className={`flex items-center gap-3 py-2 px-3 rounded-lg ${pathname === '/member/profile' ? 'bg-black text-white dark:bg-gray-800 dark:text-yellow-300' : 'text-gray-600 dark:text-gray-300'}`}
+              style={pathname === '/member/profile' ? { background: theme === 'dark' ? '#222' : '#000', color: theme === 'dark' ? '#ffe066' : '#fff' } : { color: theme === 'dark' ? '#ccc' : '' }}
+            >
+              <Image 
+                src="/globe.svg" 
+                alt="Profile" 
+                width={20} 
+                height={20} 
+                className={pathname === '/member/profile' && theme === 'dark' ? 'invert' : ''}
+              />
+              <span className="text-sm">Profile</span>
+            </div>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MemberSidebar;

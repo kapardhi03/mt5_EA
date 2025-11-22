@@ -1,0 +1,31 @@
+{
+  "name": "mt5-copytrade-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "build:prod": "NEXT_PUBLIC_API_URL=https://mt5-copytrade.onrender.com next build"
+  },
+  "dependencies": {
+    "next": "15.5.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "axios": "^1.4.0",
+    "date-fns": "^2.30.0",
+    "recharts": "^2.7.2"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.3",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5"
+  }
+}

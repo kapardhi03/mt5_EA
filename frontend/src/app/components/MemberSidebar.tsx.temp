@@ -1,0 +1,88 @@
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const MemberSidebar = () => {
+  const pathname = usePathname();
+
+  return (
+    <div className="h-screen w-64 bg-white shadow-sm">
+      <div className="p-5">
+        {/* Header */}
+        <div className="flex items-start gap-3 mb-8">
+          <Image src="/file.svg" alt="Copy Trade" width={24} height={24} />
+          <div>
+            <h2 className="font-medium text-base">Copy Trade</h2>
+            <p className="text-sm text-gray-500">Master User</p>
+          </div>
+        </div>
+        
+        {/* Navigation */}
+        <div className="space-y-1">
+          {/* Dashboard */}
+          <Link href="/member/dashboard">
+            <div className={`flex items-center gap-3 py-2 px-3 rounded-lg
+              ${pathname === '/member/dashboard' ? 'bg-black text-white' : 'text-gray-600'}`}>
+              <Image 
+                src="/window.svg" 
+                alt="Dashboard" 
+                width={20} 
+                height={20} 
+                className={pathname === '/member/dashboard' ? 'invert' : ''}
+              />
+              <span className="text-sm">Dashboard</span>
+            </div>
+          </Link>
+
+          {/* My Group */}
+          <Link href="/member/mygroup">
+            <div className={`flex items-center gap-3 py-2 px-3 rounded-lg
+              ${pathname === '/member/mygroup' ? 'bg-black text-white' : 'text-gray-600'}`}>
+              <Image 
+                src="/file.svg" 
+                alt="My Group" 
+                width={20} 
+                height={20} 
+                className={pathname === '/member/mygroup' ? 'invert' : ''}
+              />
+              <span className="text-sm">My Group</span>
+            </div>
+          </Link>
+
+          {/* Members */}
+          <Link href="/member/members">
+            <div className={`flex items-center gap-3 py-2 px-3 rounded-lg
+              ${pathname === '/member/members' ? 'bg-black text-white' : 'text-gray-600'}`}>
+              <Image 
+                src="/globe.svg" 
+                alt="Members" 
+                width={20} 
+                height={20} 
+                className={pathname === '/member/members' ? 'invert' : ''}
+              />
+              <span className="text-sm">Members</span>
+            </div>
+          </Link>
+
+          {/* Profile */}
+          <Link href="/member/profile">
+            <div className={`flex items-center gap-3 py-2 px-3 rounded-lg
+              ${pathname === '/member/profile' ? 'bg-black text-white' : 'text-gray-600'}`}>
+              <Image 
+                src="/globe.svg" 
+                alt="Profile" 
+                width={20} 
+                height={20} 
+                className={pathname === '/member/profile' ? 'invert' : ''}
+              />
+              <span className="text-sm">Profile</span>
+            </div>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MemberSidebar;
