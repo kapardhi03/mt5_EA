@@ -144,4 +144,3 @@ if __name__ == "__main__":
         reload=True if settings.DEBUG else False,
         workers=1
     )
-    " hehe"
