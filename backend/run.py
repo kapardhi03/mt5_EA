@@ -15,9 +15,11 @@ from backend.main import app
 
 if __name__ == "__main__":
     import uvicorn
+    # Use environment PORT if provided (useful for deployment), default to 8080
+    port = int(os.environ.get("PORT", "8080"))
     uvicorn.run(
         "backend.main:app",
         host="0.0.0.0",
-        port=8000,
+        port=port,
         reload=True
     )
