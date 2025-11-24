@@ -1,5 +1,14 @@
 {
+  "name": "mt5-copytrade",
+  "version": "1.0.0",
+  "private": true,
   "dependencies": {
-    "mongoose": "^8.19.1"
+    "mongoose": "^8.19.1",
+    "concurrently": "^7.6.0"
+  },
+  "scripts": {
+    "start": "concurrently \"python backend/run.py\" \"npm --prefix frontend run dev\"",
+    "frontend": "npm --prefix frontend run dev",
+    "backend": "python backend/run.py"
   }
 }
